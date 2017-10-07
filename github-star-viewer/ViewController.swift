@@ -22,6 +22,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        self.tableView.rowHeight = 75
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.fetchRepositories()
     }
 
@@ -55,6 +58,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.setCell(repository: self.repositories[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showReadme", sender: self)
     }
 
 
